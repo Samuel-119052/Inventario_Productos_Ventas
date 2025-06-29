@@ -85,6 +85,31 @@ void actualizarProducto(){
 		}
 	}
 }
+void eliminarProducto(){
+	if(Cntpro==0){
+		cout<<"No hay productos registrados"<<endl;
+	}else{
+		string Probus;
+		cout<<"Ingrese el producto a eliminar"<<endl;
+		cin.ignore();
+		getline(cin, Probus);
+		int Proeli = -1;
+		for(int i=0; i<Cntpro; i++){
+			if(Pro[i].Nompr==Probus){
+				Proeli=i;
+			}
+		}
+		if(Proeli!=-1){
+			for(int j=Proeli; j<Cntpro-1; j++){
+				Pro[j]=Pro[j+1];
+			}
+			Cntpro--;
+			cout<<"Producto eliminado"<<endl;
+		}else{
+			cout<<"Producto no encontrado"<<endl;
+		}
+	}
+}
 void menu(){
 	char op;
 	while(op!='9'){
@@ -94,6 +119,7 @@ void menu(){
 		cout<<"2) Listar Productos"<<endl;
 		cout<<"3) Buscar producto"<<endl;
 		cout<<"4) Actualizar producto"<<endl;
+		cout<<"5) Eliminar producto"<<endl;
 		cout<<"Elija una opcion"<<endl;
 		cin>>op;
 		if(op=='1'){
@@ -104,6 +130,8 @@ void menu(){
 			buscarProducto();
 		}else if(op=='4'){
 			actualizarProducto();
+		}else if(op=='5'){
+			eliminarProducto();
 		}
 	}
 }
