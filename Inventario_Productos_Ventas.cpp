@@ -7,8 +7,45 @@ struct Producto {
 	string Nompr;
 	float Prcp;
 };
+struct Venta {
+	int Idvnt;
+	string Pdct;
+	int Cnt;
+	float Prct;
+};
 Producto Pro[maxp];
+Venta Vnt[maxv];
 int Cntpro = 0;
+int Cntvnt = 0;
+int Contv = 1;
+void registrarVenta(){
+	if(Cntvnt < maxv){
+		cin.ignore();
+		string Nompro;
+		int Cnt;
+		bool Rgt = false;
+		cout<<"Nombre del producto vendido: ";
+		getline(cin, Nompro);
+		cout<<"Cantidad vendida: ";
+		cin>>Cnt;
+		for(int i=0; i<Cntpro; i++){
+			if(Pro[i].Nompr == Nompro){
+				Vnt[i].Idvnt = Contv++;
+				Vnt[i].Pdct = Nompro;
+				Vnt[i].Cnt = Cnt;
+				Vnt[i].Prct = Pro[i].Prcp * Cnt;
+				Cntvnt++;
+				cout<<"Venta registrada. Total: $ "<< Pro[i].Prcp * Cnt<<endl;
+				Rgt = true;
+			}
+		}
+		if(Rgt == false){
+			cout<<"Producto no encontrado"<<endl;
+		}
+	}else{
+		cout<<"Limite de ventas alcanzado"<<endl;
+	}	
+}
 void registrarProducto(){
 	if(Cntpro<maxp){
 		Producto p;
@@ -110,6 +147,7 @@ void eliminarProducto(){
 		}
 	}
 }
+
 void menu(){
 	char op;
 	while(op!='9'){
@@ -120,6 +158,7 @@ void menu(){
 		cout<<"3) Buscar producto"<<endl;
 		cout<<"4) Actualizar producto"<<endl;
 		cout<<"5) Eliminar producto"<<endl;
+		cout<<"6) Registra una venta"<<endl;
 		cout<<"Elija una opcion"<<endl;
 		cin>>op;
 		if(op=='1'){
@@ -132,6 +171,8 @@ void menu(){
 			actualizarProducto();
 		}else if(op=='5'){
 			eliminarProducto();
+		}else if(op=='6'){
+			registrarVenta();
 		}
 	}
 }
