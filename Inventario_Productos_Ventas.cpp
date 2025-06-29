@@ -28,16 +28,31 @@ void registrarProducto(){
 		cout<<"No se puede agregar mas productos. Limite alcanzado"<<endl;
 	}
 }
+void listaProductos(){
+	if(Cntpro==0){
+		cout<<"No hay productos registrados"<<endl;
+	}else{
+		for(int i=0; i<Cntpro; i++){
+			Producto pr = Pro[i];
+			cout<<"Producto #"<<i+1<<": "<<endl;
+			cout<<"Producto: "<<pr.Nompr<<endl;
+			cout<<"Precio: "<<pr.Prcp<<"$"<<endl;
+		}
+	}
+}
 void menu(){
 	char op;
 	while(op!='9'){
 		cout<<"Menu"<<endl;
 		cout<<"Inventario de productos y ventas"<<endl;
 		cout<<"1) Registrar un nuevo producto"<<endl;
+		cout<<"2) Listar Productos"<<endl;
 		cout<<"Elija una opcion"<<endl;
 		cin>>op;
 		if(op=='1'){
 			registrarProducto();
+		}else if(op=='2'){
+			listaProductos();
 		}
 	}
 }
