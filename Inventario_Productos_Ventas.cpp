@@ -18,6 +18,13 @@ Venta Vnt[maxv];
 int Cntpro = 0;
 int Cntvnt = 0;
 int Contv = 1;
+void totalVentas(){
+	float Ttl=0;
+	for(int i=0; i<Cntvnt; i++){
+		Ttl += Vnt[i].Prct;
+	}
+	cout<<"Total de todas las ventas: $"<<Ttl<<endl;
+}
 void listaVentas(){
 	if(Cntvnt==0){
 		cout<<"No hay ventas registradas"<<endl;
@@ -163,7 +170,6 @@ void eliminarProducto(){
 		}
 	}
 }
-
 void menu(){
 	char op;
 	while(op!='9'){
@@ -176,6 +182,7 @@ void menu(){
 		cout<<"5) Eliminar producto"<<endl;
 		cout<<"6) Registra una venta"<<endl;
 		cout<<"7) Listar ventas"<<endl;
+		cout<<"8) Total de ventas"<<endl;
 		cout<<"Elija una opcion"<<endl;
 		cin>>op;
 		if(op=='1'){
@@ -192,6 +199,8 @@ void menu(){
 			registrarVenta();
 		}else if(op=='7'){
 			listaVentas();
+		}else if(op=='8'){
+			totalVentas();
 		}
 	}
 }
