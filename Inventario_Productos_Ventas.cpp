@@ -18,6 +18,18 @@ Venta Vnt[maxv];
 int Cntpro = 0;
 int Cntvnt = 0;
 int Contv = 1;
+void listaVentas(){
+	if(Cntvnt==0){
+		cout<<"No hay ventas registradas"<<endl;
+	}else{
+		for(int i=0; i<Cntvnt; i++){
+			cout<<"Id Producto: "<<Vnt[i].Idvnt<<endl;
+			cout<<"Producto: "<<Vnt[i].Pdct<<endl;
+			cout<<"Cantidad: "<<Vnt[i].Cnt<<endl;
+			cout<<"Total: $"<<Vnt[i].Prct<<endl;
+		}
+	}
+}
 void registrarVenta(){
 	if(Cntvnt < maxv){
 		cin.ignore();
@@ -28,6 +40,10 @@ void registrarVenta(){
 		getline(cin, Nompro);
 		cout<<"Cantidad vendida: ";
 		cin>>Cnt;
+		while(Cnt<=0){
+			cout<<"Intentelo denuevo"<<endl;
+			cin>>Cnt;
+		}
 		for(int i=0; i<Cntpro; i++){
 			if(Pro[i].Nompr == Nompro){
 				Vnt[i].Idvnt = Contv++;
@@ -159,6 +175,7 @@ void menu(){
 		cout<<"4) Actualizar producto"<<endl;
 		cout<<"5) Eliminar producto"<<endl;
 		cout<<"6) Registra una venta"<<endl;
+		cout<<"7) Listar ventas"<<endl;
 		cout<<"Elija una opcion"<<endl;
 		cin>>op;
 		if(op=='1'){
@@ -173,6 +190,8 @@ void menu(){
 			eliminarProducto();
 		}else if(op=='6'){
 			registrarVenta();
+		}else if(op=='7'){
+			listaVentas();
 		}
 	}
 }
