@@ -183,6 +183,7 @@ void menu(){
 		cout<<"6) Registra una venta"<<endl;
 		cout<<"7) Listar ventas"<<endl;
 		cout<<"8) Total de ventas"<<endl;
+		cout<<"9) Salir"<<endl;
 		cout<<"Elija una opcion"<<endl;
 		cin>>op;
 		if(op=='1'){
@@ -201,6 +202,10 @@ void menu(){
 			listaVentas();
 		}else if(op=='8'){
 			totalVentas();
+		}else if(op=='9'){
+			cout<<"Saliendo del programa..."<<endl;
+		}else{
+			cout<<"Opcion no valida. Intente de nuevo"<<endl;
 		}
 	}
 }
