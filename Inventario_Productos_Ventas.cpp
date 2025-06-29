@@ -61,6 +61,30 @@ void buscarProducto(){
 		}
 	}
 }
+void actualizarProducto(){
+	if(Cntpro==0){
+		cout<<"No hay productos registrados"<<endl;
+	}else{
+		cin.ignore();
+		string Actpro;
+		cout<<"Ingrese el nombre del producto a actualizar"<<endl;
+		getline(cin, Actpro);
+		bool Act=false;
+		for(int i=0; i<Cntpro; i++){
+			if(Pro[i].Nompr == Actpro){
+				cout<<"Nuevo nombre: ";
+				getline(cin, Pro[i].Nompr);
+				cout<<"Nuevo Precio: ";
+				cin>>Pro[i].Prcp;
+				cout<<"Producto actualizado"<<endl;
+				Act=true;
+			}
+		}
+		if(Act==false){
+			cout<<"Producto no encontrado"<<endl;
+		}
+	}
+}
 void menu(){
 	char op;
 	while(op!='9'){
@@ -69,6 +93,7 @@ void menu(){
 		cout<<"1) Registrar un nuevo producto"<<endl;
 		cout<<"2) Listar Productos"<<endl;
 		cout<<"3) Buscar producto"<<endl;
+		cout<<"4) Actualizar producto"<<endl;
 		cout<<"Elija una opcion"<<endl;
 		cin>>op;
 		if(op=='1'){
@@ -77,6 +102,8 @@ void menu(){
 			listaProductos();
 		}else if(op=='3'){
 			buscarProducto();
+		}else if(op=='4'){
+			actualizarProducto();
 		}
 	}
 }
